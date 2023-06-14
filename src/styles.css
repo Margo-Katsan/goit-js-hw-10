@@ -1,0 +1,109 @@
+body {
+  background-color: lightpink;
+}
+.is-hidden {
+  display: none;
+}
+
+.breed-select {
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+}
+.cat-info {
+  background-color: #fff;
+  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
+    0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+
+  width: 350px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 15px;
+  border-radius: 10px;
+}
+.photo-of-cat {
+  display: block;
+}
+.name-breed-cat {
+  text-align: center;
+}
+.desc-cat {
+  text-align: justify;
+  font-size: 16px;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+.temp-cat-second-part {
+  font-weight: bold;
+}
+.loader {
+  animation: rotate 3s infinite;
+  height: 50px;
+  width: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.loader:before,
+.loader:after {
+  border-radius: 50%;
+  content: '';
+  display: block;
+  height: 20px;
+  width: 20px;
+}
+.loader:before {
+  animation: ball1 1s infinite;
+  background-color: #fff;
+  box-shadow: 30px 0 0 palevioletred;
+  margin-bottom: 10px;
+}
+.loader:after {
+  animation: ball2 1s infinite;
+  background-color: palevioletred;
+  box-shadow: 30px 0 0 #fff;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg) scale(0.8);
+  }
+  50% {
+    transform: rotate(360deg) scale(1.2);
+  }
+  100% {
+    transform: rotate(720deg) scale(0.8);
+  }
+}
+
+@keyframes ball1 {
+  0% {
+    box-shadow: 30px 0 0 palevioletred;
+  }
+  50% {
+    box-shadow: 0 0 0 palevioletred;
+    margin-bottom: 0;
+    transform: translate(15px, 15px);
+  }
+  100% {
+    box-shadow: 30px 0 0 palevioletred;
+    margin-bottom: 10px;
+  }
+}
+
+@keyframes ball2 {
+  0% {
+    box-shadow: 30px 0 0 #fff;
+  }
+  50% {
+    box-shadow: 0 0 0 #fff;
+    margin-top: -20px;
+    transform: translate(15px, 15px);
+  }
+  100% {
+    box-shadow: 30px 0 0 #fff;
+    margin-top: 0;
+  }
+}
