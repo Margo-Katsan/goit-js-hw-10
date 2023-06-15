@@ -19,9 +19,9 @@ function fetchBreeds(loaderEl) {
         showNotify();
         throw new Error(response.statusText);
       }
-      
       return response.json();
-  });
+    })
+    .catch(showNotify);
 };
 function fetchCatByBreed(breedId, catInfo, loaderEl) {
   catInfo.classList.add('is-hidden');
@@ -29,12 +29,12 @@ function fetchCatByBreed(breedId, catInfo, loaderEl) {
   return fetch(`${BASE_URL}images/search?api_key=${API_KEY}&breed_ids=${breedId}`)
     .then(response => {
       if (!response.ok) {
+        loaderEl.classList.add('is-hidden');
         showNotify();
         throw new Error(response.statusText);
       }
-
       return response.json();
-  });
+    });
 }
 
-export default { fetchBreeds,  fetchCatByBreed};
+export default { fetchBreeds,  fetchCatByBreed, showNotify};

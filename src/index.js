@@ -9,6 +9,7 @@ function fillSelectOptions(breeds) {
   return breeds.map(breed => `<option value=${breed.id}>${breed.name}</option>`).join('');
 }
 function renderinfoAboutCatCard(imageCat, cat) {
+  console.log(cat);
   if (catInfo.children.length !== 0) {
     destroyCatInfo();
   }
@@ -26,8 +27,14 @@ function destroyCatInfo() {
 function onChangeSelect() {
   API.fetchCatByBreed(selectEl.value, catInfo, loaderEl)
     .then(data => {
-      catInfo.classList.remove('is-hidden');
       loaderEl.classList.add('is-hidden');
+      if (data.length === 0) {
+        API.showNotify();
+        
+        return;
+      }
+      catInfo.classList.remove('is-hidden');
+
       catInfo.insertAdjacentHTML('beforeend', renderinfoAboutCatCard(data[0], data[0].breeds[0]));
     })
     .catch(error => { console.log(error) })
@@ -35,9 +42,11 @@ function onChangeSelect() {
 
 API.fetchBreeds(loaderEl)
   .then(breeds => {
-    selectEl.classList.remove('is-hidden');
     loaderEl.classList.add('is-hidden');
     selectEl.insertAdjacentHTML('beforeend', fillSelectOptions(breeds));
+    selectEl.classList.remove('is-hidden');
+    
+    
     new SlimSelect({
       select: '.breed-select'
     });
